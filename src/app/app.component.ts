@@ -46,7 +46,7 @@ class Poodle extends Dog{
   }
   move(){
     let moving = super.move();
-    console.log('poddle is walking...')
+    console.log('poddle is walking...');
   }
 }
 
@@ -98,6 +98,26 @@ class Worker extends Person{
     }
   }
 
+//Interface
+interface Stuff{
+  name: string;
+  age: number;
+  department?: string;
+
+  foo?(s: string);
+  // foo?(n: number);
+}
+
+class StuffTwo implements Stuff{
+  name: string;
+  age: number;
+
+  foo(s: string){
+    this.name = s;
+
+  }
+}
+//end Interface
 
 @Component({
   selector: 'app-root',
@@ -112,7 +132,8 @@ export class AppComponent implements OnInit {
     // this.animalClassTesting();
     // this.classCompatibilityTesting();
   // this.extendDerivedClassTesting();
-  this.protectedTesting();
+  // this.protectedTesting();
+  this.interfaceTesting({ name: "xyz", age: 25});
   }
 
   classTesting() {
@@ -141,9 +162,8 @@ console.log(employee);
 
 user = john;
 console.log(user);
-
-
 }
+
 extendDerivedClassTesting(){
   const poddle = new Poodle('Tom')
   poddle.move();
@@ -156,4 +176,14 @@ protectedTesting(){
   // const person = new Person("Patrick");
   // console.log(person)
 }
+//end class testing
+//interface testing
+interfaceTesting(x: Stuff){
+  console.log(`${x.name} is ${x.age} years old and works on ${x.department}.`)
+  // x.foo(5);
+  const stuff = new StuffTwo();
+  stuff.foo('test');
+  console.log(stuff.name);
+}
+//end interface
 }
