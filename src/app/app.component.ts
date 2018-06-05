@@ -89,11 +89,11 @@ class Person {
 
 class Worker extends Person{
   private department: string;
-  constructor(name:string, department:string){
+  constructor(name: string, department: string){
     super(name);
     this.department = department;
   }
-    getDetails(){
+    getDetails() {
       return `My name is ${this.name} and I work in ${this.department}.` ;
     }
   }
